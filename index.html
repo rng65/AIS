@@ -3,128 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIS Portfolio | Part 1</title>
+    <title>Riya Gandhi | Finance & Accounting Portfolio</title>
     <style>
-        /* Global Styles */
+        :root {
+            --navy: #0a192f;
+            --blue: #1d4ed8;
+            --light-bg: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #38bdf8;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: radial-gradient(circle at top left, #1e293b, #0f172a);
-            color: #f8fafc;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--light-bg); color: var(--text-main); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: var(--navy);
+            padding: 1rem 10%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        nav .logo { color: white; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent); }
 
-        /* Decorative Background Elements */
-        .glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(0, 212, 255, 0.1);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-        }
+        /* Container */
+        .container { max-width: 1100px; margin: 0 auto; padding: 4rem 20px; }
 
-        /* Main Card */
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 32px;
-            padding: 3rem;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            max-width: 420px;
-            width: 90%;
+        /* Header / About Section */
+        .header-section { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; color: var(--navy); margin-bottom: 0.5rem; }
+        .school-tag { color: var(--blue); font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem; display: block; }
+        
+        .profile-wrapper {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 3rem;
         }
+        .profile-wrapper img { width: 180px; height: 180px; border-radius: 20px; object-fit: cover; border: 4px solid var(--light-bg); }
+        .bio-text p { font-size: 1.05rem; color: var(--text-main); }
 
-        /* Profile Image Styling */
-        .image-ring {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 1.5rem;
-            border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(45deg, #00d4ff, #0055ff);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-        }
+        /* Stats Grid - "The Advanced Look" */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 5rem; }
+        .stat-card { background: var(--navy); padding: 2rem; border-radius: 16px; text-align: center; color: white; transition: 0.3s; }
+        .stat-card:hover { transform: translateY(-5px); background: #112240; }
+        .stat-card h3 { font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .stat-card p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
 
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #1e293b;
-            background: #334155;
-        }
+        /* Section Titles */
+        .section-header { display: flex; align-items: center; margin-bottom: 2rem; gap: 15px; }
+        .section-header h2 { font-size: 1.5rem; color: var(--navy); white-space: nowrap; }
+        .line { height: 1px; background: #e2e8f0; width: 100%; }
 
-        /* Text Styling */
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
+        /* Experience Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .card:hover { border-color: var(--blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card h4 { font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
+        .card .role { color: var(--blue); font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 12px; }
+        .card ul { padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-muted); }
+        .card li { margin-bottom: 8px; }
 
-        .role {
-            color: #38bdf8;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        p {
-            color: #94a3b8;
-            line-height: 1.6;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Status Button */
-        .btn {
-            background: #f8fafc;
-            color: #0f172a;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            background: #00d4ff;
-            color: white;
-        }
+        @media (max-width: 850px) { .grid { grid-template-columns: 1fr; } .profile-wrapper { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
-    <div class="glow"></div>
+    <nav>
+        <div class="logo">RIYA GANDHI</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="mailto:rng65@scarletmail.rutgers.edu">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="glass-card">
-        <div class="image-ring">
-            <img src="profile.jpg" alt="Profile Picture"> 
-                 onerror="this.src='https://ui-avatars.com/api/?name=User&background=0f172a&color=38bdf8&size=200'">
+    <div class="container">
+        <div class="header-section" id="about">
+            <span class="school-tag">RUTGERS UNIVERSITY</span>
+            <h1>Finance & Accounting Portfolio</h1>
+            <p class="section-desc">Honors student pursuing a B.S. in Finance & Accounting[cite: 5, 7].</p>
         </div>
-        
-        <span class="role">System Developer</span>
-        <h1>Project AIS</h1>
-        <p>Information systems student specializing in the intersection of finance and technology.</p>
-        
-        <a href="#" class="btn">Part 1 Online</a>
+
+        <div class="profile-wrapper">
+            <img src="assets/profile.jpg" alt="Riya Gandhi" onerror="this.src='https://ui-avatars.com/api/?name=RG&background=0a192f&color=fff&size=200'">
+            <div class="bio-text">
+                <p>Incoming Investment Banking Summer Analyst at Mizuho Financial Group with experience in Tax Consulting and Corporate Finance[cite: 12, 20, 26]. GPA: 3.7/4.0 (Dean's List)[cite: 7]. Specialist in valuation analysis, financial reporting, and market trend analysis[cite: 17, 24, 42].</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><h3>$4.2B+</h3><p>Aggregate Deal Value [cite: 16]</p></div>
+            <div class="stat-card"><h3>15%</h3><p>Expenditure Reduction [cite: 28]</p></div>
+            <div class="stat-card"><h3>2,000+</h3><p>Newsletter Readership [cite: 42]</p></div>
+            <div class="stat-card"><h3>1500</h3><p>SAT Score [cite: 7]</p></div>
+        </div>
+
+        <div class="section-header" id="experience">
+            <h2>Professional Experience</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h4>Mizuho Financial Group</h4>
+                <span class="role">Investment Banking Summer Analyst [cite: 12]</span>
+                <ul>
+                    <li>Supported transactions totaling $4.2B+ in aggregate deal value[cite: 16].</li>
+                    <li>Updated DCF, comparable company, and precedent transaction models[cite: 17].</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>KPMG LLP</h4>
+                <span class="role">Tax Consulting Intern [cite: 20]</span>
+                <ul>
+                    <li>Assisted in preparing Schedule K-1s for 18 private equity engagements[cite: 21].</li>
+                    <li>Managed book-to-tax reconciliations using Asset Management Platform (AMP)[cite: 21].</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Broadridge Financial</h4>
+                <span class="role">Financial Accounting Intern [cite: 22]</span>
+                <ul>
+                    <li>Analyzed GL details and Trial Balances using Oracle EBS and IBM Planning Analytics[cite: 24].</li>
+                    <li>Managed FX Loader rates and multi-currency reconciliation[cite: 24].</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>SageSure Insurance</h4>
+                <span class="role">Corporate Finance Intern [cite: 26]</span>
+                <ul>
+                    <li>Conducted cost-benefit analysis reducing expenditures by 15%[cite: 28].</li>
+                    <li>Performed quality checks on high-stake financial statements[cite: 28].</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header" id="skills" style="margin-top: 4rem;">
+            <h2>Technical Skills & Interests</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h4>Technical Toolbox</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">
+                    Bloomberg Market Concepts [cite: 46]<br>
+                    QuickBooks ProAdvisor [cite: 46]<br>
+                    Oracle EBS & IBM Planning Analytics [cite: 24]<br>
+                    Advanced MS Office Suite [cite: 45]
+                </p>
+            </div>
+            <div class="card">
+                <h4>Beyond Finance</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">
+                    Languages: English, Spanish, Gujarati, Hindi [cite: 44]<br>
+                    Activities: Rutgers Blueprint (VP Publicity) [cite: 47]<br>
+                    Interests: Skydiving, Scuba Diving, Bhangra Dance [cite: 47]
+                </p>
+            </div>
+        </div>
     </div>
 
 </body>
