@@ -17,7 +17,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--light-bg); color: var(--text-main); line-height: 1.6; }
 
-        /* Navigation */
         nav {
             background: var(--navy);
             padding: 1rem 10%;
@@ -27,18 +26,15 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        nav .logo { color: white; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+        nav .logo { color: white; font-weight: 800; font-size: 1.2rem; }
         nav ul { display: flex; list-style: none; }
         nav ul li { margin-left: 25px; }
-        nav ul li a { color: #cbd5e1; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
         nav ul li a:hover { color: var(--accent); }
 
-        /* Container */
         .container { max-width: 1100px; margin: 0 auto; padding: 4rem 20px; }
 
-        /* Header / About Section */
         .header-section { text-align: center; margin-bottom: 4rem; }
         h1 { font-size: 2.5rem; color: var(--navy); margin-bottom: 0.5rem; }
         .school-tag { color: var(--blue); font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem; display: block; }
@@ -54,29 +50,34 @@
             text-align: left;
             margin-bottom: 3rem;
         }
-        .profile-wrapper img { width: 180px; height: 180px; border-radius: 20px; object-fit: cover; border: 4px solid var(--light-bg); }
+        
+        /* Fixed Image Styling */
+        .img-container { width: 180px; height: 180px; flex-shrink: 0; }
+        .profile-pic { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 20px; 
+            object-fit: cover; 
+            border: 4px solid var(--light-bg);
+            background: var(--navy);
+        }
+
         .bio-text p { font-size: 1.05rem; color: var(--text-main); }
 
-        /* Stats Grid - "The Advanced Look" */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 5rem; }
-        .stat-card { background: var(--navy); padding: 2rem; border-radius: 16px; text-align: center; color: white; transition: 0.3s; }
-        .stat-card:hover { transform: translateY(-5px); background: #112240; }
+        .stat-card { background: var(--navy); padding: 2rem; border-radius: 16px; text-align: center; color: white; }
         .stat-card h3 { font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; }
-        .stat-card p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+        .stat-card p { font-size: 0.85rem; text-transform: uppercase; opacity: 0.8; }
 
-        /* Section Titles */
         .section-header { display: flex; align-items: center; margin-bottom: 2rem; gap: 15px; }
-        .section-header h2 { font-size: 1.5rem; color: var(--navy); white-space: nowrap; }
+        .section-header h2 { font-size: 1.5rem; color: var(--navy); }
         .line { height: 1px; background: #e2e8f0; width: 100%; }
 
-        /* Experience Grid */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
-        .card:hover { border-color: var(--blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card h4 { font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
+        .card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .card h4 { font-size: 1.1rem; color: var(--navy); }
         .card .role { color: var(--blue); font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 12px; }
         .card ul { padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-muted); }
-        .card li { margin-bottom: 8px; }
 
         @media (max-width: 850px) { .grid { grid-template-columns: 1fr; } .profile-wrapper { flex-direction: column; text-align: center; } }
     </style>
@@ -97,21 +98,24 @@
         <div class="header-section" id="about">
             <span class="school-tag">RUTGERS UNIVERSITY</span>
             <h1>Finance & Accounting Portfolio</h1>
-            <p class="section-desc">Honors student pursuing a B.S. in Finance & Accounting[cite: 5, 7].</p>
+            <p>Honors student pursuing a B.S. in Finance & Accounting.</p>
         </div>
 
         <div class="profile-wrapper">
-            <img src="assets/profile.jpg" alt="Riya Gandhi" onerror="this.src='https://ui-avatars.com/api/?name=RG&background=0a192f&color=fff&size=200'">
+            <div class="img-container">
+                <img src="assets/profile.jpg" alt="Riya Gandhi" class="profile-pic" 
+                     onerror="this.src='https://ui-avatars.com/api/?name=RG&background=0a192f&color=fff&size=200'">
+            </div>
             <div class="bio-text">
-                <p>Incoming Investment Banking Summer Analyst at Mizuho Financial Group with experience in Tax Consulting and Corporate Finance[cite: 12, 20, 26]. GPA: 3.7/4.0 (Dean's List)[cite: 7]. Specialist in valuation analysis, financial reporting, and market trend analysis[cite: 17, 24, 42].</p>
+                <p>Incoming Investment Banking Summer Analyst at Mizuho Financial Group with experience in Tax Consulting and Corporate Finance. GPA: 3.7/4.0 (Dean's List). Specialist in valuation analysis, financial reporting, and market trend analysis.</p>
             </div>
         </div>
 
         <div class="stats-grid">
-            <div class="stat-card"><h3>$4.2B+</h3><p>Aggregate Deal Value [cite: 16]</p></div>
-            <div class="stat-card"><h3>15%</h3><p>Expenditure Reduction [cite: 28]</p></div>
-            <div class="stat-card"><h3>2,000+</h3><p>Newsletter Readership [cite: 42]</p></div>
-            <div class="stat-card"><h3>1500</h3><p>SAT Score [cite: 7]</p></div>
+            <div class="stat-card"><h3>$4.2B+</h3><p>Aggregate Deal Value</p></div>
+            <div class="stat-card"><h3>15%</h3><p>Expenditure Reduction</p></div>
+            <div class="stat-card"><h3>2,000+</h3><p>Newsletter Readership</p></div>
+            <div class="stat-card"><h3>1500</h3><p>SAT Score</p></div>
         </div>
 
         <div class="section-header" id="experience">
@@ -122,59 +126,19 @@
         <div class="grid">
             <div class="card">
                 <h4>Mizuho Financial Group</h4>
-                <span class="role">Investment Banking Summer Analyst [cite: 12]</span>
+                <span class="role">Investment Banking Summer Analyst</span>
                 <ul>
-                    <li>Supported transactions totaling $4.2B+ in aggregate deal value[cite: 16].</li>
-                    <li>Updated DCF, comparable company, and precedent transaction models[cite: 17].</li>
+                    <li>Supported transactions totaling $4.2B+ in aggregate deal value.</li>
+                    <li>Updated DCF and comparable company models.</li>
                 </ul>
             </div>
             <div class="card">
                 <h4>KPMG LLP</h4>
-                <span class="role">Tax Consulting Intern [cite: 20]</span>
+                <span class="role">Tax Consulting Intern</span>
                 <ul>
-                    <li>Assisted in preparing Schedule K-1s for 18 private equity engagements[cite: 21].</li>
-                    <li>Managed book-to-tax reconciliations using Asset Management Platform (AMP)[cite: 21].</li>
+                    <li>Prepared Schedule K-1s for 18 private equity engagements.</li>
+                    <li>Managed book-to-tax reconciliations using AMP.</li>
                 </ul>
-            </div>
-            <div class="card">
-                <h4>Broadridge Financial</h4>
-                <span class="role">Financial Accounting Intern [cite: 22]</span>
-                <ul>
-                    <li>Analyzed GL details and Trial Balances using Oracle EBS and IBM Planning Analytics[cite: 24].</li>
-                    <li>Managed FX Loader rates and multi-currency reconciliation[cite: 24].</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h4>SageSure Insurance</h4>
-                <span class="role">Corporate Finance Intern [cite: 26]</span>
-                <ul>
-                    <li>Conducted cost-benefit analysis reducing expenditures by 15%[cite: 28].</li>
-                    <li>Performed quality checks on high-stake financial statements[cite: 28].</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section-header" id="skills" style="margin-top: 4rem;">
-            <h2>Technical Skills & Interests</h2>
-            <div class="line"></div>
-        </div>
-        <div class="grid">
-            <div class="card">
-                <h4>Technical Toolbox</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">
-                    Bloomberg Market Concepts [cite: 46]<br>
-                    QuickBooks ProAdvisor [cite: 46]<br>
-                    Oracle EBS & IBM Planning Analytics [cite: 24]<br>
-                    Advanced MS Office Suite [cite: 45]
-                </p>
-            </div>
-            <div class="card">
-                <h4>Beyond Finance</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">
-                    Languages: English, Spanish, Gujarati, Hindi [cite: 44]<br>
-                    Activities: Rutgers Blueprint (VP Publicity) [cite: 47]<br>
-                    Interests: Skydiving, Scuba Diving, Bhangra Dance [cite: 47]
-                </p>
             </div>
         </div>
     </div>
